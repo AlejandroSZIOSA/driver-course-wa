@@ -1,6 +1,18 @@
 export const QUESTION_DATA = [
-  { qId: 1, question: "q1", answer: "an1" },
-  { qId: 2, question: "q2", answer: "an2" },
+  {
+    qId: 1,
+    question: "q1",
+    answer: "an1",
+    imageUrl: "Url1",
+    description: "d1",
+  },
+  {
+    qId: 2,
+    question: "q2",
+    answer: "an2",
+    imageUrl: "Url2",
+    description: "d2",
+  },
 ];
 
 export const WRONG_ANSWERS = [
