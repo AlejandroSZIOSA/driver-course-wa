@@ -1,4 +1,4 @@
-import MainHeader from "@/components/ui/main-header";
+import MainFooter from "@/components/ui/main-footer";
 import "./globals.css";
 
 export const metadata = {
@@ -10,9 +10,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <MainHeader />
         {children}
-        <footer>footer</footer>
+        <MainFooter />
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
+import Link from "next/link";
 import React from "react";
 
-export default function MainHeader() {
-  return <header>main header</header>;
+export default function MainHeader({ children }) {
+  return <header>{children}</header>;
 }
