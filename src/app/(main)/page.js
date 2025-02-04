@@ -1,10 +1,10 @@
 import MainHeader from "@/components/ui/main-header";
 import styles from "@/styles/pages/home/page.module.css";
-import { QUESTION_DATA } from "@/mock/dummy-data";
+import { QUESTIONS } from "@/mock/dummy-data";
 import Link from "next/link";
 
 export default function Home() {
-  console.log(QUESTION_DATA);
+  console.log(QUESTIONS);
   return (
     <div>
       <MainHeader>
@@ -14,7 +14,7 @@ export default function Home() {
       </MainHeader>
       <main className={styles.mainContainer}>
         <h1>Home page</h1>
-        <Link href="intro">START</Link>
+        <Link href="/start">START</Link>
       </main>
     </div>
   );

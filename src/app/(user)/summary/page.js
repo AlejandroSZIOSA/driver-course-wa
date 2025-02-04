@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function SummaryPage() {
-  return <div></div>;
+  return <div>Summary Page</div>;
 }

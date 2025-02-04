@@ -1,4 +1,4 @@
-export const QUESTION_DATA = [
+export const QUESTIONS = [
   {
     qId: 1,
     question: "q1",
