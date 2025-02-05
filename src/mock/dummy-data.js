@@ -1,21 +1,26 @@
 export const QUESTIONS = [
   {
-    qId: 1,
+    id: 1,
     question: "q1",
     answer: "an1",
+    wrongAnswers: ["wa11", "wa12", "wa13"],
     imageUrl: "Url1",
     description: "d1",
   },
   {
-    qId: 2,
+    id: 2,
     question: "q2",
     answer: "an2",
+    wrongAnswers: ["wa21", "wa22", "wa23"],
     imageUrl: "Url2",
     description: "d2",
   },
-];
-
-export const WRONG_ANSWERS = [
-  { wId: 1, qId: 1, answers: ["wa1", "wa2", "wa3"] },
-  { wId: 2, qId: 2, answers: ["wa1", "wa2"] },
+  {
+    id: 3,
+    question: "q3",
+    answer: "an3",
+    wrongAnswers: ["wa31", "wa32", "wa33"],
+    imageUrl: "Url3",
+    description: "d3",
+  },
 ];
