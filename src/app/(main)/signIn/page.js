@@ -1,5 +1,5 @@
 "use client";
-import MainHeader from "@/components/ui/main-header";
+import MainHeader from "@/components/main-header";
 import { useRouter } from "next/navigation";
 
 export default function SignInPage() {

@@ -1,4 +1,4 @@
-import MainFooter from "@/components/ui/main-footer";
+import MainFooter from "@/components/main-footer";
 import "../globals.css";
 
 export const metadata = {
