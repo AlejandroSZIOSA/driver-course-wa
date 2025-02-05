@@ -1,5 +1,5 @@
 import MainHeader from "@/components/main-header";
-import styles from "@/styles/pages/home/page.module.css";
+import styles from "@/styles/pages/home.module.css";
 import { QUESTIONS } from "@/mock/dummy-data";
 import Link from "next/link";
 
