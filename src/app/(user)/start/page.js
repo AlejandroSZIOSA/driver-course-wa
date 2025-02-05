@@ -19,7 +19,7 @@ export default function StartPage() {
       <main>
         <h2>start Page</h2>
         <div>
-          <h3>{QUESTIONS[currentIndex].answer}</h3>
+          <h3>{QUESTIONS[currentIndex].question}</h3>
           <button onClick={() => setCurrentIndex(currentIndex + 1)}>
             Next Question
           </button>
