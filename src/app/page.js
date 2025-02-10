@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useQuestions } from "@/context/QuestionsContext";
 import { QUESTIONS } from "@/mock/dummy-data";
 import { useEffect } from "react";
+import MainFooter from "@/components/main-footer";
 
 export default function Home() {
   const { questions, setQuestions } = useQuestions();
@@ -25,6 +26,7 @@ export default function Home() {
         <h1>Home page</h1>
         <Link href="/start">START</Link>
       </main>
+      <MainFooter />
     </>
   );
 }
