@@ -1,5 +1,6 @@
 import UserHeader from "@/components/user-header";
 import "../globals.css";
+import QuestionsProvider from "@/context/QuestionsContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,8 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <UserHeader />
-        {children}
+        <QuestionsProvider>
+          <UserHeader />
+          {children}
+        </QuestionsProvider>
       </body>
     </html>
   );

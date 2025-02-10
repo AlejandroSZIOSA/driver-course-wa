@@ -1,12 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
-import { QUESTIONS } from "@/mock/dummy-data";
+import { useState, useEffect, useContext } from "react";
+import { QuestionsContext } from "@/context/QuestionsContext";
 import { useRouter } from "next/navigation";
 
-const LAST_INDEX = QUESTIONS.length - 1;
 export default function StartPage() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const { questions } = useContext(QuestionsContext);
+  let LAST_INDEX = questions.length - 1;
 
   useEffect(() => {
     if (currentIndex > LAST_INDEX) {
@@ -19,7 +21,7 @@ export default function StartPage() {
       <main>
         <h2>start Page</h2>
         <div>
-          <h3>{QUESTIONS[currentIndex].question}</h3>
+          <h3>{questions[currentIndex].question}</h3>
           <button onClick={() => setCurrentIndex(currentIndex + 1)}>
             Next Question
           </button>
