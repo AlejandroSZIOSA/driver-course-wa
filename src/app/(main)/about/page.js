@@ -1,12 +1,10 @@
 "use client";
 import MainHeader from "@/components/main-header";
+import { useQuestions } from "@/context/QuestionsContext";
 import { useRouter } from "next/navigation";
 
-import { QuestionsContext } from "@/context/QuestionsContext";
-import { useContext } from "react";
 export default function AboutPage() {
-  const { questions } = useContext(QuestionsContext);
-
+  const { questions } = useQuestions();
   const router = useRouter();
 
   console.log(questions);

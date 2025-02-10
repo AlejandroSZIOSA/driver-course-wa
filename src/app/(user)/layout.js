@@ -11,10 +11,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <QuestionsProvider>
-          <UserHeader />
-          {children}
-        </QuestionsProvider>
+        <UserHeader />
+        {children}
       </body>
     </html>
   );
