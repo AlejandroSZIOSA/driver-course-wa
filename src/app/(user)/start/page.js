@@ -1,13 +1,13 @@
 "use client";
 import { useState, useEffect, useContext } from "react";
-import { QuestionsContext } from "@/context/QuestionsContext";
 import { useRouter } from "next/navigation";
+import { useQuestions } from "@/context/QuestionsContext";
 
 export default function StartPage() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const { questions } = useContext(QuestionsContext);
+  const { questions } = useQuestions();
   let LAST_INDEX = questions.length - 1;
 
   useEffect(() => {
