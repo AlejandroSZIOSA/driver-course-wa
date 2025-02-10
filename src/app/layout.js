@@ -1,5 +1,5 @@
+import AppProviders from "@/context/AppProviders";
 import "./globals.css";
-import QuestionsProvider from "@/context/QuestionsContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <QuestionsProvider>{children}</QuestionsProvider>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

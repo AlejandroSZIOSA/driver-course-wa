@@ -1,17 +1,22 @@
 "use client";
+import { useEffect } from "react";
 import MainHeader from "@/components/main-header";
+import MainFooter from "@/components/main-footer";
 import styles from "@/styles/pages/home.module.css";
 import Link from "next/link";
-import { useQuestions } from "@/context/QuestionsContext";
+
 import { QUESTIONS } from "@/mock/dummy-data";
-import { useEffect } from "react";
-import MainFooter from "@/components/main-footer";
+
+import { useQuestions } from "@/context/QuestionsContext";
+import { useUser } from "@/context/UserContext";
 
 export default function Home() {
   const { questions, setQuestions } = useQuestions();
+  const { isLogin } = useUser();
 
   useEffect(() => {
     setQuestions(QUESTIONS);
+    console.log(isLogin);
   }, []);
 
   return (

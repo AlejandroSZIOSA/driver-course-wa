@@ -1,8 +1,9 @@
-import { Children, createContext } from "react";
+"use client";
+import { useState, createContext, useContext } from "react";
 
-export const UserContext = createContext();
+const UserContext = createContext();
 
-export default function UserProvider() {
+export default function UserProvider({ children }) {
   const [isLogin, setIsLogin] = useState(true);
 
   const login = () => {
@@ -15,7 +16,11 @@ export default function UserProvider() {
 
   return (
     <UserContext.Provider value={{ isLogin, login, logOut }}>
-      {Children}
+      {children}
     </UserContext.Provider>
   );
+}
+
+export function useUser() {
+  return useContext(UserContext);
 }
