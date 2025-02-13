@@ -10,15 +10,22 @@ import { QUESTIONS } from "@/mock/dummy-data";
 import { useQuestions } from "@/context/QuestionsContext";
 import { useUser } from "@/context/UserContext";
 
+import { getAllQuestions } from "@/lib/api";
+
 export default function Home() {
-  const { questions, setQuestions } = useQuestions();
+  const { setQuestions } = useQuestions();
   const { isLogin } = useUser();
 
   useEffect(() => {
+    getQuestions();
     setQuestions(QUESTIONS);
     console.log(isLogin);
   }, []);
 
+  async function getQuestions() {
+    const data = await getAllQuestions();
+    console.log(data);
+  }
   return (
     <>
       <MainHeader className={styles.main_header}>
