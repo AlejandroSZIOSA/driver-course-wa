@@ -3,12 +3,18 @@ import MainHeader from "@/components/main-header";
 import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
 
+import { QUESTIONS } from "@/mock/dummy-data";
+import { useQuestions } from "@/context/QuestionsContext";
+
 export default function LoginPage() {
   const { isLogin, logIn } = useAuthUser();
   const router = useRouter();
 
+  const { setQuestions } = useQuestions();
+
   function handleLogInUser() {
     logIn();
+    setQuestions(QUESTIONS);
     router.push("/"); // Go to home page
   }
   return (

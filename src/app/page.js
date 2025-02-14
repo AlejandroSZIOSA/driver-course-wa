@@ -4,25 +4,17 @@ import MainHeader from "@/components/main-header";
 import MainFooter from "@/components/main-footer";
 import styles from "@/styles/pages/home.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { QUESTIONS } from "@/mock/dummy-data";
-
-import { useQuestions } from "@/context/QuestionsContext";
 import { useAuthUser } from "@/context/AuthContext";
 
 import { getAllQuestions } from "@/lib/api";
 
-import { useRouter } from "next/navigation";
-
 export default function Home() {
-  const { setQuestions } = useQuestions();
   const { isLogin, logOut } = useAuthUser();
-
   const router = useRouter();
 
   useEffect(() => {
-    getQuestions();
-    setQuestions(QUESTIONS);
     console.log(isLogin);
   }, []);
 
