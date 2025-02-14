@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import MainHeader from "@/components/main-header";
 import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
@@ -6,11 +7,23 @@ import { useAuthUser } from "@/context/AuthContext";
 import { QUESTIONS } from "@/mock/dummy-data";
 import { useQuestions } from "@/context/QuestionsContext";
 
+//Sanity
+import { getAllQuestions } from "@/lib/api";
+
 export default function LoginPage() {
   const { isLogin, logIn } = useAuthUser();
   const router = useRouter();
 
   const { setQuestions } = useQuestions();
+
+  useEffect(() => {
+    getQuestions();
+  }, []);
+
+  async function getQuestions() {
+    const data = await getAllQuestions();
+    console.log("sanity:", data);
+  }
 
   function handleLogInUser() {
     logIn();

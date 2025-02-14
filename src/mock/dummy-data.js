@@ -24,3 +24,9 @@ export const QUESTIONS = [
     description: "d3",
   },
 ];
+
+export const USER_PROTO = {
+  id: 1,
+  username: "user1",
+  password: "pass1",
+};

@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 import MainHeader from "@/components/main-header";
 import MainFooter from "@/components/main-footer";
 import styles from "@/styles/pages/home.module.css";
@@ -8,24 +7,14 @@ import { useRouter } from "next/navigation";
 
 import { useAuthUser } from "@/context/AuthContext";
 
-import { getAllQuestions } from "@/lib/api";
-
 export default function Home() {
   const { isLogin, logOut } = useAuthUser();
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(isLogin);
-  }, []);
-
-  async function getQuestions() {
-    const data = await getAllQuestions();
-    console.log("sanity:", data);
-  }
-
   function handleStart() {
     router.push("/start");
   }
+
   return (
     <>
       <MainHeader className={styles.main_header}>
