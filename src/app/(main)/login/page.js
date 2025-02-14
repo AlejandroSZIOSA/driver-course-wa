@@ -1,10 +1,10 @@
 "use client";
 import MainHeader from "@/components/main-header";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/context/UserContext";
+import { useAuthUser } from "@/context/AuthContext";
 
 export default function LoginPage() {
-  const { isLogin, logIn } = useUser();
+  const { isLogin, logIn } = useAuthUser();
   const router = useRouter();
 
   function handleLogInUser() {

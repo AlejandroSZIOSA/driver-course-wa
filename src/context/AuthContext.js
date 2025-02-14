@@ -1,9 +1,9 @@
 "use client";
 import { useState, createContext, useContext } from "react";
 
-const UserContext = createContext();
+const AuthContext = createContext();
 
-export default function UserProvider({ children }) {
+export default function AuthProvider({ children }) {
   const [isLogin, setIsLogin] = useState(false);
 
   const logIn = () => {
@@ -15,12 +15,12 @@ export default function UserProvider({ children }) {
   };
 
   return (
-    <UserContext.Provider value={{ isLogin, logIn, logOut }}>
+    <AuthContext.Provider value={{ isLogin, logIn, logOut }}>
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
 }
 
-export function useUser() {
-  return useContext(UserContext);
+export function useAuthUser() {
+  return useContext(AuthContext);
 }

@@ -8,13 +8,13 @@ import Link from "next/link";
 import { QUESTIONS } from "@/mock/dummy-data";
 
 import { useQuestions } from "@/context/QuestionsContext";
-import { useUser } from "@/context/UserContext";
+import { useAuthUser } from "@/context/AuthContext";
 
 import { getAllQuestions } from "@/lib/api";
 
 export default function Home() {
   const { setQuestions } = useQuestions();
-  const { isLogin, logOut } = useUser();
+  const { isLogin, logOut } = useAuthUser();
 
   useEffect(() => {
     getQuestions();
