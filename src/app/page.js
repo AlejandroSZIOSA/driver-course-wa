@@ -12,9 +12,13 @@ import { useAuthUser } from "@/context/AuthContext";
 
 import { getAllQuestions } from "@/lib/api";
 
+import { useRouter } from "next/navigation";
+
 export default function Home() {
   const { setQuestions } = useQuestions();
   const { isLogin, logOut } = useAuthUser();
+
+  const router = useRouter();
 
   useEffect(() => {
     getQuestions();
@@ -25,6 +29,10 @@ export default function Home() {
   async function getQuestions() {
     const data = await getAllQuestions();
     console.log("sanity:", data);
+  }
+
+  function handleStart() {
+    router.push("/start");
   }
   return (
     <>
@@ -37,7 +45,9 @@ export default function Home() {
       </MainHeader>
       <main className={styles.mainContainer}>
         <h1>Home page</h1>
-        <Link href="/start">START</Link>
+        <button onClick={handleStart} disabled={!isLogin ? true : false}>
+          START
+        </button>
       </main>
       <MainFooter />
     </>
