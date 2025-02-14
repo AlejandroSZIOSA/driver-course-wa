@@ -14,7 +14,7 @@ import { getAllQuestions } from "@/lib/api";
 
 export default function Home() {
   const { setQuestions } = useQuestions();
-  const { isLogin } = useUser();
+  const { isLogin, logOut } = useUser();
 
   useEffect(() => {
     getQuestions();
@@ -24,7 +24,7 @@ export default function Home() {
 
   async function getQuestions() {
     const data = await getAllQuestions();
-    console.log(data);
+    console.log("sanity:", data);
   }
   return (
     <>
@@ -33,6 +33,7 @@ export default function Home() {
         <Link href="/about">To About</Link>
         <Link href="/login">To login</Link>
         <Link href="/signIn">To Sign In</Link>
+        <button onClick={() => logOut()}>Log out</button>
       </MainHeader>
       <main className={styles.mainContainer}>
         <h1>Home page</h1>
