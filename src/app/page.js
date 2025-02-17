@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
 
 export default function Home() {
-  const { isLogin, logOut } = useAuthUser();
+  const { user, logOut } = useAuthUser();
   const router = useRouter();
 
   function handleStart() {
@@ -26,7 +26,7 @@ export default function Home() {
       </MainHeader>
       <main className={styles.mainContainer}>
         <h1>Home page</h1>
-        <button onClick={handleStart} disabled={!isLogin ? true : false}>
+        <button onClick={handleStart} disabled={!user.isAuth ? true : false}>
           START
         </button>
       </main>

@@ -11,7 +11,7 @@ import { useQuestions } from "@/context/QuestionsContext";
 import { getAllQuestions } from "@/lib/api";
 
 export default function LoginPage() {
-  const { isLogin, logIn } = useAuthUser();
+  const { user, logIn } = useAuthUser();
   const router = useRouter();
 
   const { setQuestions } = useQuestions();
@@ -28,8 +28,9 @@ export default function LoginPage() {
   function handleLogInUser() {
     logIn();
     setQuestions(QUESTIONS);
-    router.push("/"); // Go to home page
+    router.push("/");
   }
+
   return (
     <>
       <MainHeader>
@@ -37,8 +38,8 @@ export default function LoginPage() {
       </MainHeader>
       <main>
         <h2>LOG IN PAGE</h2>
-        <p> Is logIn: {isLogin ? <span>Yes</span> : <span>No</span>}</p>
-        <button onClick={handleLogInUser}>login</button>
+        <p> Is logIn: {user.isAuth ? <span>Yes</span> : <span>No</span>}</p>
+        {!user.isAuth && <button onClick={handleLogInUser}>login</button>}
       </main>
     </>
   );
