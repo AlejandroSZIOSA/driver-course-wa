@@ -1,0 +1,49 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background: #0070f3; */
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.toggleMenu {
+  display: block;
+}
+
+.menuItems {
+  display: none;
+  border-top: 1px solid #eee;
+}
+
+.menuItems.open {
+  display: block;
+}
+
+.menuItems ul li {
+  display: block;
+  width: 100%;
+}
+
+.link {
+  display: block;
+  width: 100%;
+}
+
+/* Menu Styles */
+/* .menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+}
+ */
