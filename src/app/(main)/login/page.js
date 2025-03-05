@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import MainHeader from "@/components/main-header";
 import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
+import Image from "next/image";
 
 import { QUESTIONS } from "@/mock/dummy-data";
 import { useQuestions } from "@/context/QuestionsContext";
@@ -34,7 +35,13 @@ export default function LoginPage() {
   return (
     <>
       <MainHeader>
-        <button onClick={router.back}>Go back</button>
+        <Image
+          src="/svg/icons/back.svg"
+          width={25}
+          height={25}
+          alt="back"
+          onClick={router.back}
+        />
       </MainHeader>
       <main>
         <h2>LOG IN PAGE</h2>

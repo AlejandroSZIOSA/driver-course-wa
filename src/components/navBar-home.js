@@ -11,10 +11,12 @@ export default function NavBarHome({ logOutFN }) {
 
   return (
     <nav className={classes.navbar}>
-      <Link href="/about">About Us</Link>
+      <Link href="/about">
+        <Image src="/svg/icons/info.svg" width={25} height={25} alt="Look" />
+      </Link>
       <ul>
         <li className={classes.toggleMenu} onClick={toggleMenu}>
-          <Image src="/svg/lock.svg" width={25} height={25} alt="Look" />
+          <Image src="/svg/icons/lock.svg" width={25} height={25} alt="Look" />
         </li>
         <li
           className={`${classes.menuItems} ${
