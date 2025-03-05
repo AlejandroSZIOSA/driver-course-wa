@@ -1,5 +1,4 @@
-import React from "react";
-
+import classes from "@/styles/components/MainFooter.module.css";
 export default function MainFooter() {
-  return <div>main footer</div>;
+  return <div className={classes.container}>Main footer</div>;
 }

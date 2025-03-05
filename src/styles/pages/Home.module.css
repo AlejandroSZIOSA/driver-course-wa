@@ -1,6 +1,20 @@
 .mainContainer {
   display: flex;
-  height: 200px;
+  height: 700px;
   flex-direction: column;
   text-align: center;
+  align-items: center;
+}
+
+.mainContainer h1 {
+  padding: 20px;
+}
+
+.mainContainer Image {
+  align-items: center;
+}
+
+.mainContainer h2 {
+  display: flex;
+  padding: 10px;
 }
