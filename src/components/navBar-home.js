@@ -41,8 +41,8 @@ export default function NavBarHome({ logOutFN }) {
               <Link href="/signIn" className={classes.link}>
                 SignIn
               </Link>
-              <li onClick={() => logOutFN()}>LogOut</li>
             </li>
+            <li onClick={() => logOutFN()}>LogOut</li>
           </ul>
         </li>
       </ul>

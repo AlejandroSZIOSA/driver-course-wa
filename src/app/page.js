@@ -2,9 +2,11 @@
 import MainHeader from "@/components/main-header";
 import MainFooter from "@/components/main-footer";
 import NavBarHome from "@/components/navBar-home";
-import styles from "@/styles/pages/home.module.css";
+import classes from "@/styles/pages/Home.module.css";
+
 import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
+import PrimaryButton from "@/components/primary-button";
 
 export default function Home() {
   const { user, logOut } = useAuthUser();
@@ -16,14 +18,14 @@ export default function Home() {
 
   return (
     <>
-      <MainHeader className={styles.main_header}>
+      <MainHeader className={classes.main_header}>
         <NavBarHome logOutFN={logOut} />
       </MainHeader>
-      <main className={styles.mainContainer}>
+      <main className={classes.mainContainer}>
         <h1>Home page</h1>
-        <button onClick={handleStart} disabled={!user.isAuth ? true : false}>
+        <PrimaryButton onclickFN={handleStart} isDisabled={!user.isAuth}>
           START
-        </button>
+        </PrimaryButton>
       </main>
       <MainFooter />
     </>

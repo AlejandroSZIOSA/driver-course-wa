@@ -1,5 +1,6 @@
 .mainContainer {
   display: flex;
+  height: 200px;
   flex-direction: column;
   text-align: center;
 }
