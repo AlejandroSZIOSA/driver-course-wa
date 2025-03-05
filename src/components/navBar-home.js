@@ -12,11 +12,21 @@ export default function NavBarHome({ logOutFN }) {
   return (
     <nav className={classes.navbar}>
       <Link href="/about">
-        <Image src="/svg/icons/info.svg" width={25} height={25} alt="Look" />
+        <Image
+          src="/svg/icons/info.svg"
+          width={25}
+          height={25}
+          alt="InfoIcon"
+        />
       </Link>
       <ul>
         <li className={classes.toggleMenu} onClick={toggleMenu}>
-          <Image src="/svg/icons/lock.svg" width={25} height={25} alt="Look" />
+          <Image
+            src="/svg/icons/lock.svg"
+            width={25}
+            height={25}
+            alt="LockIcon"
+          />
         </li>
         <li
           className={`${classes.menuItems} ${
@@ -31,9 +41,8 @@ export default function NavBarHome({ logOutFN }) {
               <Link href="/signIn" className={classes.link}>
                 SignIn
               </Link>
-              {/*  <button onClick={() => logOutFN()}>LogOut</button> */}
             </li>
-            <li onClick={() => logOutFN()}>LogOut</li>
+            <button onClick={() => logOutFN()}>LogOut</button>
           </ul>
         </li>
       </ul>
