@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import classes from "@/styles/components/NavBarHome.module.css";
-
+import Image from "next/image";
 export default function NavBarHome({ logOutFN }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -11,10 +11,10 @@ export default function NavBarHome({ logOutFN }) {
 
   return (
     <nav className={classes.navbar}>
-      <Link href="/login">About Us</Link>
+      <Link href="/about">About Us</Link>
       <ul>
         <li className={classes.toggleMenu} onClick={toggleMenu}>
-          Menu icon
+          <Image src="/svg/lock.svg" width={25} height={25} alt="Look" />
         </li>
         <li
           className={`${classes.menuItems} ${
@@ -24,13 +24,14 @@ export default function NavBarHome({ logOutFN }) {
           <ul>
             <li>
               <Link href="/login" className={classes.link}>
-                To login
+                Login
               </Link>
               <Link href="/signIn" className={classes.link}>
-                To Sign In
+                SignIn
               </Link>
-              <button onClick={() => logOutFN()}>Log out</button>
+              {/*  <button onClick={() => logOutFN()}>LogOut</button> */}
             </li>
+            <li onClick={() => logOutFN()}>LogOut</li>
           </ul>
         </li>
       </ul>
