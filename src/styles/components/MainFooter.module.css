@@ -2,4 +2,24 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
+  background-color: aqua;
+  height: 130px;
+}
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 100px;
+}
+
+.innerContainer div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container div div p {
+  font-size: 18px;
 }
