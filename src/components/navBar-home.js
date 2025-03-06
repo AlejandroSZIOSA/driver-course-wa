@@ -12,13 +12,26 @@ export default function NavBarHome({ logOutFN }) {
     setIsOpen((open) => !open);
   };
 
+  //A Function with JSX :)
   function changeLockIcon(iconUrl) {
     return (
       <li className={classes.toggleMenu} onClick={toggleMenu}>
-        <Image src={`${iconUrl}`} width={25} height={25} alt="LockIcon" />
+        <Image src={`${iconUrl}`} width={25} height={25} alt="lockIcon" />
       </li>
     );
   }
+
+  //A Constant with JSX :)
+  const menuItems = (
+    <>
+      <Link href="/login" className={classes.link}>
+        Login
+      </Link>
+      <Link href="/signIn" className={classes.link}>
+        SignIn
+      </Link>
+    </>
+  );
 
   return (
     <nav className={classes.navbar}>
@@ -40,18 +53,7 @@ export default function NavBarHome({ logOutFN }) {
           }`}
         >
           <ul>
-            <li>
-              {!user.isAuth && (
-                <>
-                  <Link href="/login" className={classes.link}>
-                    Login
-                  </Link>
-                  <Link href="/signIn" className={classes.link}>
-                    SignIn
-                  </Link>
-                </>
-              )}
-            </li>
+            <li>{!user.isAuth && menuItems}</li>
             <li onClick={() => logOutFN()}>LogOut</li>
           </ul>
         </li>
