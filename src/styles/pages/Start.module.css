@@ -1,0 +1,7 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  background: red;
+  text-align: center;
+}

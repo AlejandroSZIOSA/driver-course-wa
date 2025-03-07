@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { useQuestions } from "@/context/QuestionsContext";
 import classes from "@/styles/pages/Start.module.css";
+import Image from "next/image";
 
 export default function StartPage() {
   const router = useRouter();
@@ -18,11 +19,21 @@ export default function StartPage() {
   }, [currentIndex]);
 
   if (currentIndex <= LAST_INDEX) {
+    console.log(questions);
     return (
-      <main>
-        <h2>start Page</h2>
+      <main className={classes.main}>
+        <h1>Question {currentIndex + 1}</h1>
         <div>
-          <h3>{questions[currentIndex].question}</h3>
+          {/* <Image
+            src="/image-175b98f570403de007463c776acc01d8a283bfaa-728x410-jpg"
+            width={400}
+            height={500}
+            alt="CarHomePage"
+            priority={true}
+          /> */}
+        </div>
+        <div>
+          <h2>{questions[currentIndex].description}</h2>
           <button onClick={() => setCurrentIndex(currentIndex + 1)}>
             Next Question
           </button>
