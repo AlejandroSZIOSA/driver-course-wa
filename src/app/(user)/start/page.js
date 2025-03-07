@@ -2,6 +2,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { useQuestions } from "@/context/QuestionsContext";
+import classes from "@/styles/pages/Start.module.css";
 
 export default function StartPage() {
   const router = useRouter();

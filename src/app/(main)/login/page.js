@@ -13,9 +13,9 @@ import { getAllQuestions } from "@/lib/api";
 
 export default function LoginPage() {
   const { user, logIn } = useAuthUser();
-  const router = useRouter();
+  const { questions, setQuestions } = useQuestions();
 
-  const { setQuestions } = useQuestions();
+  const router = useRouter();
 
   useEffect(() => {
     getQuestions();
@@ -23,12 +23,12 @@ export default function LoginPage() {
 
   async function getQuestions() {
     const data = await getAllQuestions();
-    console.log("sanity:", data);
+    setQuestions(data);
   }
 
   function handleLogInUser() {
     logIn();
-    setQuestions(QUESTIONS);
+    /* console.log("sanity:", questions); */
     router.push("/");
   }
 
