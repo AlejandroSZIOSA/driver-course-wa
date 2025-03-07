@@ -25,9 +25,9 @@ export const QUESTIONS = [
   },
 ];
 
-export const USER_TEST = {
+/* export const USER_TEST = {
   id: 1,
   username: "user1",
   password: "pass1",
   isAuth: false,
-};
+}; */

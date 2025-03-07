@@ -3,11 +3,14 @@ import Link from "next/link";
 import classes from "@/styles/components/NavBarHome.module.css";
 import Image from "next/image";
 import { useAuthUser } from "@/context/AuthContext";
+import { useQuestions } from "@/context/QuestionsContext";
 
-export default function NavBarHome({ logOutFN }) {
+export default function NavBarHome() {
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useAuthUser();
+  const { user, log_Out } = useAuthUser();
+  const { clean_Questions_List } = useQuestions();
 
+  // Toggle the lock icon menu
   const toggleMenu = () => {
     setIsOpen((open) => !open);
   };
@@ -19,6 +22,12 @@ export default function NavBarHome({ logOutFN }) {
         <Image src={`${iconUrl}`} width={25} height={25} alt="lockIcon" />
       </li>
     );
+  }
+
+  //Set logOut User status
+  function handleLogOutUser() {
+    log_Out();
+    clean_Questions_List();
   }
 
   //A Constant with JSX :)
@@ -54,7 +63,7 @@ export default function NavBarHome({ logOutFN }) {
         >
           <ul>
             <li>{!user.isAuth && menuItems}</li>
-            <li onClick={() => logOutFN()}>LogOut</li>
+            <li onClick={handleLogOutUser}>LogOut</li>
           </ul>
         </li>
       </ul>

@@ -9,8 +9,14 @@ export default function QuestionsProvider({ children }) {
   //4-Create value to share
   const [questions, setQuestions] = useState(null);
 
+  const clean_Questions_List = () => {
+    setQuestions(null);
+  };
+
   return (
-    <QuestionsContext.Provider value={{ questions, setQuestions }}>
+    <QuestionsContext.Provider
+      value={{ questions, setQuestions, clean_Questions_List }}
+    >
       {children}
     </QuestionsContext.Provider>
   );

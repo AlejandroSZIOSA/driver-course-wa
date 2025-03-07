@@ -1,15 +1,12 @@
 "use client";
 import { useState, createContext, useContext } from "react";
-import { USER_TEST } from "@/mock/dummy-data";
 
 const AuthContext = createContext();
 
-const initialUserState = USER_TEST;
-
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState(initialUserState);
+  const [user, setUser] = useState({});
 
-  const logIn = () => {
+  const log_In = () => {
     setUser({
       id: 1,
       username: "user1",
@@ -18,7 +15,7 @@ export default function AuthProvider({ children }) {
     });
   };
 
-  const logOut = () => {
+  const log_Out = () => {
     setUser({
       id: 1,
       username: "user1",
@@ -36,7 +33,7 @@ export default function AuthProvider({ children }) {
   }; */
 
   return (
-    <AuthContext.Provider value={{ user, logIn, logOut }}>
+    <AuthContext.Provider value={{ user, log_In, log_Out }}>
       {children}
     </AuthContext.Provider>
   );

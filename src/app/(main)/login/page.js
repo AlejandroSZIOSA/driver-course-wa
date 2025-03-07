@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
 import Image from "next/image";
 
-import { QUESTIONS } from "@/mock/dummy-data";
 import { useQuestions } from "@/context/QuestionsContext";
 
 //Sanity
@@ -15,7 +14,7 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
-  const { user, logIn } = useAuthUser();
+  const { user, log_In } = useAuthUser();
   const { questions, setQuestions } = useQuestions(); //CTX: null
 
   const router = useRouter();
@@ -31,7 +30,7 @@ export default function LoginPage() {
   }
 
   function handleLogInUser() {
-    logIn();
+    log_In();
     getQuestions();
     console.log("sanity:", questions);
     router.push("/");
@@ -48,6 +47,7 @@ export default function LoginPage() {
   let questionsCheckContent;
 
   if (questions) {
+    console.log(questions);
     questionsCheckContent = <p>Questions list have been loaded</p>;
   }
 

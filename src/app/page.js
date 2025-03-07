@@ -10,7 +10,7 @@ import { useAuthUser } from "@/context/AuthContext";
 import PrimaryButton from "@/components/primary-button";
 
 export default function Home() {
-  const { user, logOut } = useAuthUser();
+  const { user } = useAuthUser();
   const router = useRouter();
 
   function handleStart() {
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <MainHeader>
-        <NavBarHome logOutFN={logOut} />
+        <NavBarHome />
       </MainHeader>
       <main className={classes.mainContainer}>
         <h1>Driver Theory</h1>
