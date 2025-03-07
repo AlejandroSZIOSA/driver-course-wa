@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useState } from "react";
 import MainHeader from "@/components/main-header";
 import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
@@ -12,24 +12,43 @@ import { useQuestions } from "@/context/QuestionsContext";
 import { getAllQuestions } from "@/lib/api";
 
 export default function LoginPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+
   const { user, logIn } = useAuthUser();
-  const { questions, setQuestions } = useQuestions();
+  const { questions, setQuestions } = useQuestions(); //CTX: null
 
   const router = useRouter();
 
-  useEffect(() => {
-    getQuestions();
-  }, []);
-
   async function getQuestions() {
+    setIsLoading(true);
     const data = await getAllQuestions();
+    if (!data) {
+      setError("Failed to fetch questions");
+    }
+    setIsLoading(false);
     setQuestions(data);
   }
 
   function handleLogInUser() {
     logIn();
-    /* console.log("sanity:", questions); */
+    getQuestions();
+    console.log("sanity:", questions);
     router.push("/");
+  }
+
+  if (isLoading) {
+    return <div>Loading....</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  let questionsCheckContent;
+
+  if (questions) {
+    questionsCheckContent = <p>Questions list have been loaded</p>;
   }
 
   return (
@@ -47,6 +66,7 @@ export default function LoginPage() {
         <h2>LOG IN PAGE</h2>
         <p> Is logIn: {user.isAuth ? <span>Yes</span> : <span>No</span>}</p>
         {!user.isAuth && <button onClick={handleLogInUser}>login</button>}
+        {questionsCheckContent}
       </main>
     </>
   );
