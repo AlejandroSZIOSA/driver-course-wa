@@ -2,6 +2,27 @@
   display: flex;
   flex-direction: column;
   overflow-x: auto;
-  background: red;
   text-align: center;
+}
+
+.main section {
+  padding: 10px;
+  margin: 10px;
+  height: 900px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 86, 179, 1);
+}
+.imageContainer img {
+  padding: 10px 0px 10px 0px;
+}
+
+.answersContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.answersContainer label {
+  text-align: left;
+  padding: 10px;
 }
