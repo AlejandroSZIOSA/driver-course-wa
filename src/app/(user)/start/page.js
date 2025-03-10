@@ -19,18 +19,19 @@ export default function StartPage() {
   }, [currentIndex]);
 
   if (currentIndex <= LAST_INDEX) {
-    console.log(questions);
+    /* console.log(questions); */
+    /* debugger; */
     return (
       <main className={classes.main}>
         <h1>Question {currentIndex + 1}</h1>
         <div>
-          {/* <Image
-            src="/image-175b98f570403de007463c776acc01d8a283bfaa-728x410-jpg"
+          <Image
+            src={questions[currentIndex].imageUrl}
             width={400}
             height={500}
-            alt="CarHomePage"
+            alt="QuestionImage"
             priority={true}
-          /> */}
+          />
         </div>
         <div>
           <h2>{questions[currentIndex].description}</h2>

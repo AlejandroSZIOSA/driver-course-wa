@@ -1,9 +1,9 @@
 import { sanityClient } from "./sanity";
 
-const QuestionsFields = `answer: answer.current,
-description: description.current, imageUrl: imageUrl.asset->url`;
+const QuestionsFields = `
+question,answer,'imageUrl': imageUrl.asset->url`;
 
 export async function getAllQuestions() {
-  const query = `*[_type=="questions"]`;
+  const query = `*[_type=="questions"]{${QuestionsFields}}`;
   return sanityClient.fetch(query);
 }

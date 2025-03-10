@@ -22,6 +22,7 @@ export default function LoginPage() {
   async function getQuestions() {
     setIsLoading(true);
     const data = await getAllQuestions();
+    /*  debugger; */
     if (!data) {
       setError("Failed to fetch questions");
     }
