@@ -22,27 +22,26 @@ export default function StartPage() {
     if (currentIndex > LAST_INDEX) {
       router.push("/summary");
     } else {
-      randomizeFinalAnswers(addCorrectAnswers(currentIndex));
+      randomizeFinalAnswers(addCorrectAnswer(currentIndex));
     }
   }, [currentIndex]);
 
-  function addCorrectAnswers(index) {
+  function addCorrectAnswer(index) {
     let { wrongAnswers, answer } = questions[index];
-    let finalAnswers = new Array();
-    finalAnswers = [...wrongAnswers, answer];
+    let allAnswers = new Array();
+    allAnswers = [...wrongAnswers, answer];
     /* console.log(finalAnswers); */
-    return finalAnswers;
+    return allAnswers;
   }
 
   function randomizeFinalAnswers(preAnswers) {
-    let randomAnswers = [];
+    let finalRandomAnswers = [];
     for (let i = preAnswers.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [preAnswers[i], preAnswers[j]] = [preAnswers[j], preAnswers[i]]; // Swap elements
     }
-    randomAnswers = preAnswers;
-    setFinalUserAnswers(randomAnswers);
-
+    finalRandomAnswers = preAnswers;
+    setFinalUserAnswers(finalRandomAnswers);
     /* console.log(finalUserAnswers); */
   }
 
