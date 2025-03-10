@@ -51,8 +51,8 @@ export default function StartPage() {
     return (
       <main className={classes.main}>
         <section>
-          <h1>Question {currentIndex + 1}</h1>
           <div className={classes.imageContainer}>
+            <h1>Question {currentIndex + 1}</h1>
             <Image
               src={questions[currentIndex].imageUrl}
               width={380}
@@ -64,9 +64,13 @@ export default function StartPage() {
             <hr></hr>
           </div>
           <div className={classes.questionsContainer}>
-            <h2>{questions[currentIndex].question}</h2>
+            <ol>
+              <li style={{ listStyle: "outside" }}>
+                <h1>{questions[currentIndex].question}</h1>
+              </li>
+            </ol>
+
             <div className={classes.answersContainer}>
-              <h3>Choose your answer</h3>
               {finalUserAnswers.map((option) => (
                 <label key={option}>
                   <input
@@ -75,7 +79,7 @@ export default function StartPage() {
                     checked={selectedQuestion === option}
                     onChange={(e) => setSelectedQuestion(e.target.value)}
                   />
-                  {option}
+                  <p>{option}</p>
                 </label>
               ))}
 

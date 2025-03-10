@@ -17,12 +17,29 @@
   padding: 10px 0px 10px 0px;
 }
 
+.questionsContainer {
+  padding: 10px;
+}
+
+.questionsContainer ol {
+  margin-left: 10px;
+}
+
+.questionsContainer h1 {
+  text-align: left;
+  padding: 10px 0px 10px 0px;
+}
+
 .answersContainer {
   display: flex;
   flex-direction: column;
+  margin-left: 20px;
 }
 
 .answersContainer label {
+  display: flex;
   text-align: left;
+  font-size: 25px;
   padding: 10px;
+  border-bottom-style: ridge;
 }
