@@ -19,26 +19,30 @@ export default function StartPage() {
   }, [currentIndex]);
 
   if (currentIndex <= LAST_INDEX) {
-    /* console.log(questions); */
+    console.log(questions);
     /* debugger; */
     return (
       <main className={classes.main}>
-        <h1>Question {currentIndex + 1}</h1>
-        <div>
-          <Image
-            src={questions[currentIndex].imageUrl}
-            width={400}
-            height={500}
-            alt="QuestionImage"
-            priority={true}
-          />
-        </div>
-        <div>
-          <h2>{questions[currentIndex].description}</h2>
-          <button onClick={() => setCurrentIndex(currentIndex + 1)}>
-            Next Question
-          </button>
-        </div>
+        <section>
+          <h1>Question {currentIndex + 1}</h1>
+          <div>
+            <Image
+              src={questions[currentIndex].imageUrl}
+              width={400}
+              height={500}
+              alt="QuestionImage"
+              priority={true}
+            />
+
+            <p>{questions[currentIndex].description}</p>
+          </div>
+          <div>
+            <h2>{questions[currentIndex].description}</h2>
+            <button onClick={() => setCurrentIndex(currentIndex + 1)}>
+              Next Question
+            </button>
+          </div>
+        </section>
       </main>
     );
   }
