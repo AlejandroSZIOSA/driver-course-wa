@@ -23,6 +23,7 @@ export default function LoginPage() {
     setIsLoading(true);
     const data = await getAllQuestions();
     /*  debugger; */
+    /* console.log(data); */
     if (!data) {
       setError("Failed to fetch questions");
     }
@@ -33,7 +34,7 @@ export default function LoginPage() {
   function handleLogInUser() {
     log_In();
     getQuestions();
-    console.log("sanity:", questions);
+    /*  console.log("sanity:", questions); */
     router.push("/");
   }
 

@@ -12,19 +12,28 @@ export default function StartPage() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [finalUserAnswers, setFinalUserAnswers] = useState([]);
+  const [summary, setSummary] = useState([]);
+  const [userRegister, setUserRegister] = useState({});
 
-  const [selectedQuestion, setSelectedQuestion] = useState();
+  const [selectedAnswer, setSelectedAnswer] = useState(undefined);
   const { questions } = useQuestions();
 
   let LAST_INDEX = questions.length - 1;
 
   useEffect(() => {
     if (currentIndex > LAST_INDEX) {
+      console.log(summary);
       router.push("/summary");
     } else {
       randomizeFinalAnswers(addCorrectAnswer(currentIndex));
     }
   }, [currentIndex]);
+
+  useEffect(() => {
+    const { _id } = questions[currentIndex];
+    const userData = { questionId: _id, selectedAnswer: selectedAnswer };
+    setUserRegister(userData);
+  }, [selectedAnswer]);
 
   function addCorrectAnswer(index) {
     let { wrongAnswers, answer } = questions[index];
@@ -43,6 +52,11 @@ export default function StartPage() {
     finalRandomAnswers = preAnswers;
     setFinalUserAnswers(finalRandomAnswers);
     /* console.log(finalUserAnswers); */
+  }
+
+  function handleClickBtn() {
+    setSummary((prev) => [...prev, userRegister]);
+    setCurrentIndex(() => currentIndex + 1);
   }
 
   if (currentIndex <= LAST_INDEX) {
@@ -76,17 +90,20 @@ export default function StartPage() {
                   <input
                     type="radio"
                     value={option}
-                    checked={selectedQuestion === option}
-                    onChange={(e) => setSelectedQuestion(e.target.value)}
+                    checked={selectedAnswer === option}
+                    onChange={(e) => setSelectedAnswer(e.target.value)}
                   />
                   <p>{option}</p>
                 </label>
               ))}
 
-              <p>Selected: {selectedQuestion}</p>
+              <p>Selected: {selectedAnswer}</p>
             </div>
 
-            <PrimaryButton onclickFN={() => setCurrentIndex(currentIndex + 1)}>
+            <PrimaryButton
+              onclickFN={handleClickBtn}
+              isDisabled={!selectedAnswer ? true : false}
+            >
               Next Question
             </PrimaryButton>
           </div>

@@ -1,6 +1,6 @@
 import { sanityClient } from "./sanity";
 
-const QuestionsFields = `
+const QuestionsFields = `_id,
 question,answer,wrongAnswers,'imageUrl': imageUrl.asset->url,description`;
 
 export async function getAllQuestions() {
