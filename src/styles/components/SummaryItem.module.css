@@ -1,0 +1,8 @@
+.answerContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkImage {
+  margin-left: 100px;
+}
