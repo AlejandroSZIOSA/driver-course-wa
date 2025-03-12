@@ -8,10 +8,10 @@ export default function SummaryPage() {
   const { questions } = useQuestions();
 
   const searchParams = useSearchParams();
+  //Extract-Decode Array Objet from the previous page(start page)
   const userAnswers = JSON.parse(
-    decodeURIComponent(searchParams.get("summary") || "[{}]")
+    decodeURIComponent(searchParams.get("summaryData") || "[{}]")
   );
-  /* console.log(userAnswers); */
 
   return (
     <main>

@@ -6,13 +6,12 @@ import classes from "@/styles/pages/Start.module.css";
 import Image from "next/image";
 import PrimaryButton from "@/components/primary-button";
 
-/* const TEST_QUESTIONS = ["ans1", "ans2", "ans3", "correct"]; */
 export default function StartPage() {
   /*  debugger; */
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [finalUserAnswers, setFinalUserAnswers] = useState([]);
-  const [summary, setSummary] = useState([]);
+  const [summaryData, setSummaryData] = useState([]);
   const [userRegister, setUserRegister] = useState({});
 
   const [selectedAnswer, setSelectedAnswer] = useState(undefined);
@@ -22,9 +21,7 @@ export default function StartPage() {
 
   useEffect(() => {
     if (currentIndex > LAST_INDEX) {
-      /* console.log(summary); */
-      const encodedSummary = encodeURIComponent(JSON.stringify(summary));
-      router.push(`/summary?summary=${encodedSummary}`);
+      handleToSummaryPage();
     } else {
       randomizeFinalAnswers(addCorrectAnswer(currentIndex));
     }
@@ -36,12 +33,9 @@ export default function StartPage() {
     setUserRegister(userData);
   }, [selectedAnswer]);
 
-  function addCorrectAnswer(index) {
-    let { wrongAnswers, answer } = questions[index];
-    let allAnswers = new Array();
-    allAnswers = [...wrongAnswers, answer];
-    /* console.log(finalAnswers); */
-    return allAnswers;
+  function handleToSummaryPage() {
+    const encodedSummaryData = encodeURIComponent(JSON.stringify(summaryData));
+    router.push(`/summary?summaryData=${encodedSummaryData}`);
   }
 
   function randomizeFinalAnswers(preAnswers) {
@@ -55,13 +49,20 @@ export default function StartPage() {
     /* console.log(finalUserAnswers); */
   }
 
+  function addCorrectAnswer(index) {
+    let { wrongAnswers, answer } = questions[index];
+    let allAnswers = new Array();
+    allAnswers = [...wrongAnswers, answer];
+    /* console.log(finalAnswers); */
+    return allAnswers;
+  }
+
   function handleClickBtn() {
-    setSummary((prev) => [...prev, userRegister]);
+    setSummaryData((prev) => [...prev, userRegister]);
     setCurrentIndex(() => currentIndex + 1);
   }
 
   if (currentIndex <= LAST_INDEX) {
-    /* console.log(questions); */
     /* debugger; */
     return (
       <main className={classes.main}>
