@@ -22,8 +22,9 @@ export default function StartPage() {
 
   useEffect(() => {
     if (currentIndex > LAST_INDEX) {
-      console.log(summary);
-      router.push("/summary");
+      /* console.log(summary); */
+      const encodedSummary = encodeURIComponent(JSON.stringify(summary));
+      router.push(`/summary?summary=${encodedSummary}`);
     } else {
       randomizeFinalAnswers(addCorrectAnswer(currentIndex));
     }
