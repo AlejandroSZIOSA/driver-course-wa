@@ -1,0 +1,27 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.main section {
+  padding: 10px;
+  margin: 10px;
+  height: 900px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 86, 179, 1);
+}
+
+.main section h1 {
+  padding: 20px;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: inherit;
+  list-style: outside;
+}

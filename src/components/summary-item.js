@@ -30,7 +30,8 @@ export default function SummaryItem({ question, userAnswers }) {
 
   return (
     <div>
-      <h2> Question :{question.question}</h2>
+      <h2> 1 {question.question}</h2>
+      <h3> </h3>
       <p>{isCorrect ? "Correct" : "Wrong"}</p>
     </div>
   );
