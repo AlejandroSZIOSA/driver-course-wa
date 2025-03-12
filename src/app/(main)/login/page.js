@@ -4,6 +4,8 @@ import MainHeader from "@/components/main-header";
 import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
 import Image from "next/image";
+import Link from "next/link";
+import classes from "@/styles/pages/Login.module.css";
 
 import { useQuestions } from "@/context/QuestionsContext";
 
@@ -64,11 +66,28 @@ export default function LoginPage() {
           onClick={router.back}
         />
       </MainHeader>
-      <main>
-        <h2>LOG IN PAGE</h2>
+      <main className={classes.main}>
+        <h2>LOG-IN PAGE</h2>
         <p> Is logIn: {user.isAuth ? <span>Yes</span> : <span>No</span>}</p>
         {!user.isAuth && <button onClick={handleLogInUser}>login</button>}
         {questionsCheckContent}
+
+        <form className={classes.form}>
+          {/* <div>
+            <img src="/images/auth-icon.jpg" alt="A lock icon" />
+          </div> */}
+          <p>
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" id="email" required />
+          </p>
+          <p>
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" id="password" required />
+          </p>
+          <p>
+            <button type="submit">Login User</button>
+          </p>
+        </form>
       </main>
     </>
   );
