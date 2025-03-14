@@ -37,7 +37,7 @@ export default function NavBarHome() {
       <Link href="/login" className={classes.link}>
         Login
       </Link>
-      <Link href="/signUp" className={classes.link}>
+      <Link href="/signUpTest" className={classes.link}>
         SignUp
       </Link>
     </>
