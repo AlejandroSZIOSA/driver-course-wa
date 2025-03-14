@@ -19,9 +19,9 @@ export default function Home() {
 
   return (
     <>
-      <MainHeader>
+      <header className={classes.header}>
         <NavBarHome />
-      </MainHeader>
+      </header>
       <main className={classes.mainContainer}>
         <h1>Driver Theory</h1>
         <Image

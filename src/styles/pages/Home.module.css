@@ -1,3 +1,16 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  justify-content: space-between;
+  top: 0;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  z-index: 1000;
+  background-color: #9d9d9d;
+}
+
 .mainContainer {
   display: flex;
   height: 750px;

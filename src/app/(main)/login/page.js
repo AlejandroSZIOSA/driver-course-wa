@@ -1,10 +1,7 @@
 "use client";
 import { useState } from "react";
-import MainHeader from "@/components/main-header";
 import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
-import Image from "next/image";
-import Link from "next/link";
 import classes from "@/styles/pages/Login.module.css";
 
 import { useQuestions } from "@/context/QuestionsContext";
@@ -57,15 +54,6 @@ export default function LoginPage() {
 
   return (
     <>
-      <MainHeader>
-        <Image
-          src="/svg/icons/back.svg"
-          width={25}
-          height={25}
-          alt="back"
-          onClick={router.back}
-        />
-      </MainHeader>
       <main className={classes.main}>
         <h2>LOG-IN PAGE</h2>
         <p> Is logIn: {user.isAuth ? <span>Yes</span> : <span>No</span>}</p>
