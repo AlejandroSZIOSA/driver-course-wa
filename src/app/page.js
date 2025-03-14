@@ -1,5 +1,4 @@
 "use client";
-import MainHeader from "@/components/main-header";
 import MainFooter from "@/components/main-footer";
 import NavBarHome from "@/components/navBar-home";
 import classes from "@/styles/pages/Home.module.css";

@@ -2,13 +2,12 @@
 import { useRouter } from "next/navigation";
 import classes from "@/styles/pages/SignIn.module.css";
 
-export default function SignInPage() {
+export default function SignUpPage() {
   const router = useRouter();
   return (
     <>
       <main className={classes.main}>
-        <h1>Sign-In PAGE</h1>
-
+        <h1>Sign-Up PAGE</h1>
         <form id="sign-up" className={classes.form}>
           {/* <div>
             <img src="/images/auth-icon.jpg" alt="A lock icon" />

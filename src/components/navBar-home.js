@@ -33,11 +33,12 @@ export default function NavBarHome() {
   //A Constant with JSX :)
   const menuItems = (
     <>
-      <Link href="/login" className={classes.link}>
+      {/* testing */}
+      <Link href="/loginTest" className={classes.link}>
         Login
       </Link>
-      <Link href="/signIn" className={classes.link}>
-        SignIn
+      <Link href="/signUp" className={classes.link}>
+        SignUp
       </Link>
     </>
   );
