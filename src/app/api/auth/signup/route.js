@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanityClient as client } from "@/lib/sanity"; // Ensure you have Sanity client configured
+import { sanityClient as client } from "@/lib/sanity";
 import bcrypt from "bcryptjs";
 
 export async function POST(req) {
