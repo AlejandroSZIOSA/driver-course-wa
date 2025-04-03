@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import classes from "@/styles/components/SignupForm.module.css";
 
-export default function Signup() {
+export default function SignupForm() {
+  const router = useRouter();
   const [form, setForm] = useState({ name: "HOLA", email: "", password: "" });
 
   const handleSubmit = async (e) => {
@@ -20,16 +23,11 @@ export default function Signup() {
     const data = await res.json();
     console.log(data);
     /* alert(data.message); */
+    router.push("login");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Name"
-        onChange={(e) => setForm({ ...form, name: e.target.value })}
-        required
-      />
+    <form onSubmit={handleSubmit} className={classes.form}>
       <input
         type="email"
         placeholder="Email"
@@ -41,6 +39,12 @@ export default function Signup() {
         placeholder="Password"
         onChange={(e) => setForm({ ...form, password: e.target.value })}
         required
+      />
+      <input
+        type="password"
+        placeholder="Re-Password"
+        onChange={(e) => setForm({ ...form, password: e.target.value })}
+        /* required */
       />
       <button type="submit">Sign Up</button>
     </form>
