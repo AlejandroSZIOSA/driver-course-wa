@@ -34,7 +34,7 @@ export default function NavBarHome() {
   const menuItems = (
     <>
       {/* testing */}
-      <Link href="/login" className={classes.link}>
+      <Link href="/loginTest" className={classes.link}>
         Login
       </Link>
       <Link href="/signUp" className={classes.link}>

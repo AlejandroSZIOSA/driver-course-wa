@@ -38,7 +38,7 @@ export default function LoginPage() {
   }
 
   if (isLoading) {
-    return <div>Loading....</div>;
+    return <div>Login-in ....</div>;
   }
 
   if (error) {
