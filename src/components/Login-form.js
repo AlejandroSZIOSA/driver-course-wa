@@ -1,18 +1,19 @@
 //server
 import React from "react";
 import { useState } from "react";
+import classes from "@/styles/components/LoginForm.module.css";
 
 export default function LoginForm({ handleUserData }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [isLoginInUser, setIsLoginInUser] = useState(false);
-  const [errorLoginUser, setErrorLoginUser] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLoginUser = async (e) => {
-    setIsLoginInUser(true);
+    setIsLoading(true);
     e.preventDefault();
-    setErrorLoginUser("");
+    setError("");
     const res = await fetch("/api/auth/login", {
       method: "POST",
       headers: {
@@ -24,8 +25,8 @@ export default function LoginForm({ handleUserData }) {
     const data = await res.json();
 
     if (!res.ok) {
-      setErrorLoginUser(data.error);
-      setIsLoginInUser(false);
+      setError(data.error);
+      setIsLoading(false);
       return;
     }
     // Store token in localStorage (or use cookies for better security)
@@ -33,18 +34,15 @@ export default function LoginForm({ handleUserData }) {
     /* localStorage.setItem("token", data.token); */
 
     //router.push("/"); // Redirect after login
-    setIsLoginInUser(false);
+    setIsLoading(false);
     handleUserData();
   };
 
-  if (isLoginInUser) {
-    return <div>Login User ....</div>;
-  }
-
   return (
-    <>
-      {errorLoginUser && <p style={{ color: "red" }}>{errorLoginUser}</p>}
-      <form onSubmit={handleLoginUser}>
+    <div className={classes.container}>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {isLoading && <div>Loading User ....</div>}
+      <form onSubmit={handleLoginUser} className={classes.formContainer}>
         <input
           type="email"
           placeholder="Email"
@@ -61,6 +59,6 @@ export default function LoginForm({ handleUserData }) {
         />
         <button type="submit">Login</button>
       </form>
-    </>
+    </div>
   );
 }

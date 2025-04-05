@@ -9,9 +9,11 @@ import LoginForm from "@/components/Login-form";
 //Sanity
 import { getAllQuestions } from "@/lib/api";
 
-export default function LoginTestPage() {
+import classes from "@/styles/pages/Login.module.css";
+
+export default function LoginPage() {
   const [isLoadingData, setIsLoadingData] = useState(false);
-  const [errorData, setErrorData] = useState();
+  const [errorData, setErrorData] = useState("");
 
   const { log_In } = useAuthUser();
   const { questions, setQuestions } = useQuestions(); //CTX: null
@@ -34,24 +36,12 @@ export default function LoginTestPage() {
     router.push("/");
   }
 
-  if (isLoadingData) {
-    return <div>Loading Data ....</div>;
-  }
-
-  if (errorData) {
-    return <div>Error: {errorData}</div>;
-  }
-
-  /* let questionsCheckContent; */
-
-  if (questions) {
-    /* console.log(questions); */
-    return <p>Data have been loaded</p>;
-  }
-
   return (
-    <main style={{ display: "flex", flexDirection: "column" }}>
+    <main className={classes.container}>
       <h1>Login</h1>
+      {isLoadingData && <div>Loading Data ....</div>}
+      {errorData && <div>Error: {errorData}</div>}
+      {questions && <p>Data have been loaded</p>}
       <LoginForm handleUserData={handleUserData} />
     </main>
   );
