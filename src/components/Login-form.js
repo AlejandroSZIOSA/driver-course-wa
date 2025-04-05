@@ -1,7 +1,7 @@
 import React from "react";
 
-export default function LoginForm({ handleLoginUser, userData }) {
-  const { email, password, setEmail, setPassword } = userData;
+export default function LoginForm({ handleLoginUser, userInputs }) {
+  const { email, password, setEmail, setPassword } = userInputs;
   return (
     <form onSubmit={handleLoginUser}>
       <input

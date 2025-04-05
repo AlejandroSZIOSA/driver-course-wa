@@ -12,10 +12,11 @@ export default function LoginTestPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [isLoginInUser, setIsLoginInUser] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(false);
-  const [errorData, setErrorData] = useState();
 
-  const [error, setError] = useState("");
+  const [errorLoginUser, setErrorLoginUser] = useState("");
+  const [errorData, setErrorData] = useState();
 
   const router = useRouter();
 
@@ -23,9 +24,9 @@ export default function LoginTestPage() {
   const { questions, setQuestions } = useQuestions(); //CTX: null
 
   const handleLoginUser = async (e) => {
+    setIsLoginInUser(true);
     e.preventDefault();
-    setError("");
-
+    setErrorLoginUser("");
     const res = await fetch("/api/auth/login", {
       method: "POST",
       headers: {
@@ -37,7 +38,8 @@ export default function LoginTestPage() {
     const data = await res.json();
 
     if (!res.ok) {
-      setError(data.error);
+      setErrorLoginUser(data.error);
+      setIsLoginInUser(false);
       return;
     }
     // Store token in localStorage (or use cookies for better security)
@@ -45,6 +47,7 @@ export default function LoginTestPage() {
     /* localStorage.setItem("token", data.token); */
 
     //router.push("/"); // Redirect after login
+    setIsLoginInUser(false);
     handleLogInData();
   };
 
@@ -66,6 +69,10 @@ export default function LoginTestPage() {
     router.push("/");
   }
 
+  if (isLoginInUser) {
+    return <div>Login User ....</div>;
+  }
+
   if (isLoadingData) {
     return <div>Loading Data ....</div>;
   }
@@ -84,10 +91,10 @@ export default function LoginTestPage() {
   return (
     <main style={{ display: "flex", flexDirection: "column" }}>
       <h1>Login</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {errorLoginUser && <p style={{ color: "red" }}>{errorLoginUser}</p>}
       <LoginForm
         handleLoginUser={handleLoginUser}
-        userData={{ email, password, setEmail, setPassword }}
+        userInputs={{ email, password, setEmail, setPassword }}
       />
     </main>
   );
