@@ -43,7 +43,7 @@ export async function POST(req) {
       }
     );
 
-    return NextResponse.json({ message: "Login successful", token });
+    return NextResponse.json({ message: "Login User successful", token });
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error" },

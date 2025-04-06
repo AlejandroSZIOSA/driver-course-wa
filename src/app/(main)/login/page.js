@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
 import { useQuestions } from "@/context/QuestionsContext";
 
-import LoginForm from "@/components/Login-form";
+import LoginFormTest from "@/components/Login-form_test";
 //Sanity
 import { getAllQuestions } from "@/lib/api";
 
@@ -41,8 +41,8 @@ export default function LoginPage() {
       <h1>Login</h1>
       {isLoadingData && <div>Loading Data ....</div>}
       {errorData && <div>Error: {errorData}</div>}
-      {questions && <p>Data have been loaded</p>}
-      <LoginForm handleUserData={handleUserData} />
+      {questions && <p style={{ color: "green" }}>Data loaded successful</p>}
+      <LoginFormTest handleUserData={handleUserData} />
     </main>
   );
 }
