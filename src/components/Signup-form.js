@@ -13,30 +13,36 @@ export default function SignupForm() {
 
   const handleSubmit = async (e) => {
     /* debugger; */
-    setIsCreatingUser(true);
     e.preventDefault();
-    const res = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.SANITY_API_TOKEN}`,
-      },
-      body: JSON.stringify(newUser),
-    });
+    setIsCreatingUser(true);
+    setError("");
 
-    /* Authorization: "Bearer" + process.env.SANITY_API_TOKEN, */
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.SANITY_API_TOKEN}`,
+        },
+        body: JSON.stringify(newUser),
+      });
 
-    const data = await res.json();
+      /* Authorization: "Bearer" + process.env.SANITY_API_TOKEN, */
 
-    if (!res.ok) {
-      setError(data.error);
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error);
+        setIsCreatingUser(false);
+        return;
+      }
+      setMessage(data.message);
+      router.push("login");
+    } catch (error) {
+      setError(error.message);
+    } finally {
       setIsCreatingUser(false);
-      return;
     }
-
-    setIsCreatingUser(false);
-    setMessage(data.message);
-    router.push("login");
   };
 
   return (
