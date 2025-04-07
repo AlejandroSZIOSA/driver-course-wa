@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import classes from "@/styles/components/LoginForm.module.css";
 
-export default function LoginFormTest({ handleUserData }) {
+export default function LoginForm({ handleUserData }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

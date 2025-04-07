@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuthUser } from "@/context/AuthContext";
 import { useQuestions } from "@/context/QuestionsContext";
 
-import LoginForm from "@/components/Login-form";
+import LoginForm from "@/components/Login-form1";
 //Sanity
 import { getAllQuestions } from "@/lib/api";
 
