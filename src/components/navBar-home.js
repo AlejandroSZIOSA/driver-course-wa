@@ -63,7 +63,7 @@ export default function NavBarHome() {
         >
           <ul>
             <li>{!user.isAuth && menuItems}</li>
-            <li onClick={handleLogOutUser}>LogOut</li>
+            {user.isAuth && <li onClick={handleLogOutUser}>LogOut</li>}
           </ul>
         </li>
       </ul>
