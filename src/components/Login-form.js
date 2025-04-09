@@ -1,6 +1,6 @@
 //server
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "@/styles/components/LoginForm.module.css";
 
 export default function LoginForm({ handleUserData }) {
@@ -10,6 +10,16 @@ export default function LoginForm({ handleUserData }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const userStored = localStorage.getItem("user");
+    const user = userStored ? JSON.parse(userStored) : null;
+    if (user) {
+      setEmail(user.email);
+      setPassword(user.password);
+      //console.log(JSON.parse(userStored));
+    }
+  }, []);
 
   const handleLoginUser = async (e) => {
     e.preventDefault();
@@ -36,6 +46,9 @@ export default function LoginForm({ handleUserData }) {
         setIsLoading(false);
         return;
       }
+
+      //localStorage.setItem("user", JSON.stringify(newUser));
+
       setMessage(data.message);
       handleUserData();
     } catch (error) {

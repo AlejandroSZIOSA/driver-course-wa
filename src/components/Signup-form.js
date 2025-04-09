@@ -36,6 +36,9 @@ export default function SignupForm() {
         setIsCreatingUser(false);
         return;
       }
+
+      localStorage.setItem("user", JSON.stringify(newUser));
+
       setMessage(data.message);
       router.push("login");
     } catch (error) {

@@ -28,6 +28,7 @@ export default function NavBarHome() {
   function handleLogOutUser() {
     log_Out();
     clean_Questions_List();
+    localStorage.clear();
   }
 
   //A Constant with JSX :)
