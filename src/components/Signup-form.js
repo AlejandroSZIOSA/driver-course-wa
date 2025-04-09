@@ -7,8 +7,9 @@ export default function SignupForm() {
   const [newUser, setNewUser] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
   });
+
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -33,7 +34,7 @@ export default function SignupForm() {
     setError("");
 
     //Confirm the password
-    if (newUser.password !== newUser.confirmPassword) {
+    if (newUser.password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
@@ -104,8 +105,8 @@ export default function SignupForm() {
             type={showConfirmPassword ? "text" : "password"}
             name="confirmPassword"
             placeholder="Re-Password"
-            value={newUser.confirmPassword}
-            onChange={handleChange}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
           <button type="button" onClick={toggleShowConfirmPassword}>
