@@ -4,18 +4,33 @@ import { useRouter } from "next/navigation";
 import classes from "@/styles/components/SignupForm.module.css";
 
 export default function SignupForm() {
-  const [newUser, setNewUser] = useState({});
+  const [newUser, setNewUser] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [isCreatingUser, setIsCreatingUser] = useState(false);
   const [message, setMessage] = useState(false);
   const [error, setError] = useState("");
 
   const router = useRouter();
 
+  const handleChange = (e) => {
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     /* debugger; */
     e.preventDefault();
-    setIsCreatingUser(true);
     setError("");
+
+    //Confirm the password
+    if (newUser.password !== newUser.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    setIsCreatingUser(true);
 
     try {
       const res = await fetch("/api/auth/signup", {
@@ -56,21 +71,27 @@ export default function SignupForm() {
       <form onSubmit={handleSubmit} className={classes.form}>
         <input
           type="email"
+          name="email"
           placeholder="Email"
-          onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+          value={newUser.email}
+          onChange={handleChange}
           required
         />
         <input
           type="password"
+          name="password"
           placeholder="Password"
-          onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+          value={newUser.password}
+          onChange={handleChange}
           required
         />
         <input
           type="password"
+          name="confirmPassword"
           placeholder="Re-Password"
-          onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-          /* required */
+          value={newUser.confirmPassword}
+          onChange={handleChange}
+          required
         />
         <button type="submit">Sign Up</button>
       </form>

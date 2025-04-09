@@ -36,8 +36,6 @@ export default function LoginForm({ handleUserData }) {
       });
       const data = await res.json();
 
-      /* console.log(data.token); */
-      // Store token in localStorage (or use cookies for better security)
       /* localStorage.setItem("token", data.token); */
       //router.push("/"); // Redirect after login
 
