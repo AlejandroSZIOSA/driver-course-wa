@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import classes from "@/styles/components/LoginForm.module.css";
 
 export default function LoginForm({ handleUserData }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({ email: "", password: "" });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -15,11 +16,15 @@ export default function LoginForm({ handleUserData }) {
     const userStored = localStorage.getItem("user");
     const user = userStored ? JSON.parse(userStored) : null;
     if (user) {
-      setEmail(user.email);
-      setPassword(user.password);
-      //console.log(JSON.parse(userStored));
+      setUser({ email: user.email, password: user.password });
     }
   }, []);
+
+  const toggleShowPassword = () => setShowPassword(!showPassword);
+
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
   const handleLoginUser = async (e) => {
     e.preventDefault();
@@ -32,20 +37,17 @@ export default function LoginForm({ handleUserData }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(user),
       });
       const data = await res.json();
 
       /* localStorage.setItem("token", data.token); */
-      //router.push("/"); // Redirect after login
 
       if (!res.ok) {
         setError(data.error);
         setIsLoading(false);
         return;
       }
-
-      //localStorage.setItem("user", JSON.stringify(newUser));
 
       setMessage(data.message);
       handleUserData();
@@ -65,18 +67,27 @@ export default function LoginForm({ handleUserData }) {
       <form onSubmit={handleLoginUser} className={classes.formContainer}>
         <input
           type="email"
+          name="email"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={user.email}
+          onChange={handleChange}
           required
         />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div style={{ display: "flex" }}>
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Password"
+            value={user.password}
+            onChange={handleChange}
+            required
+          />
+
+          <button type="button" onClick={toggleShowPassword}>
+            {!showPassword ? "Show" : "Hide"}
+          </button>
+        </div>
+
         <button type="submit">Login</button>
       </form>
     </div>

@@ -9,11 +9,19 @@ export default function SignupForm() {
     password: "",
     confirmPassword: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [isCreatingUser, setIsCreatingUser] = useState(false);
   const [message, setMessage] = useState(false);
   const [error, setError] = useState("");
 
   const router = useRouter();
+
+  const toggleShowPassword = () => setShowPassword(!showPassword);
+  const toggleShowConfirmPassword = () =>
+    setShowConfirmPassword(!showConfirmPassword);
 
   const handleChange = (e) => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
@@ -77,22 +85,33 @@ export default function SignupForm() {
           onChange={handleChange}
           required
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={newUser.password}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Re-Password"
-          value={newUser.confirmPassword}
-          onChange={handleChange}
-          required
-        />
+
+        <div style={{ display: "flex" }}>
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Password"
+            value={newUser.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="button" onClick={toggleShowPassword}>
+            {!showPassword ? "Show" : "Hide"}
+          </button>
+        </div>
+        <div>
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            name="confirmPassword"
+            placeholder="Re-Password"
+            value={newUser.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+          <button type="button" onClick={toggleShowConfirmPassword}>
+            {!showConfirmPassword ? "Show" : "Hide"}
+          </button>
+        </div>
         <button type="submit">Sign Up</button>
       </form>
     </>
