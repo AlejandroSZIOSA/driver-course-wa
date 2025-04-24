@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useQuestions } from "@/context/QuestionsContext";
 import classes from "@/styles/pages/Start.module.css";
 import Image from "next/image";
 import PrimaryButton from "@/components/primary-button";
+import Link from "next/link";
 
 export default function StartPage() {
   /*  debugger; */
@@ -17,20 +18,24 @@ export default function StartPage() {
   const [selectedAnswer, setSelectedAnswer] = useState(undefined);
   const { questions } = useQuestions();
 
-  let LAST_INDEX = questions.length - 1;
+  /* let LAST_INDEX = questions.length - 1; */
 
   useEffect(() => {
-    if (currentIndex > LAST_INDEX) {
-      handleToSummaryPage();
-    } else {
-      randomizeFinalAnswers(addCorrectAnswer(currentIndex));
+    if (questions) {
+      if (currentIndex > questions.length - 1) {
+        handleToSummaryPage();
+      } else {
+        randomizeFinalAnswers(addCorrectAnswer(currentIndex));
+      }
     }
   }, [currentIndex]);
 
   useEffect(() => {
-    const { _id } = questions[currentIndex];
-    const userData = { questionId: _id, selectedAnswer: selectedAnswer };
-    setUserRegister(userData);
+    if (questions) {
+      const { _id } = questions[currentIndex];
+      const userData = { questionId: _id, selectedAnswer: selectedAnswer };
+      setUserRegister(userData);
+    }
   }, [selectedAnswer]);
 
   function handleToSummaryPage() {
@@ -62,7 +67,19 @@ export default function StartPage() {
     setCurrentIndex(() => currentIndex + 1);
   }
 
-  if (currentIndex <= LAST_INDEX) {
+  if (!questions) {
+    return (
+      <div>
+        <h1>Error Data User</h1>
+        <h2>Log In Again</h2>
+        <Link href="/">
+          <button>To Home</button>
+        </Link>
+      </div>
+    );
+  }
+
+  if (currentIndex <= questions.length - 1) {
     /* debugger; */
     return (
       <main className={classes.main}>
