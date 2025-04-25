@@ -30,25 +30,15 @@
   align-items: baseline;
 }
 
-.showButton {
-  width: 30%;
-  padding: 0.75rem;
-  background-color: #0077ff;
-  color: white;
-  /* border: none;
-  border-radius: 50px; */
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 .lockButtonsContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  height: 90px;
+  background-color: aqua;
 }
 
 .lockButtonsContainer button {
-  width: 30%;
+  /* width: 30%; */
 }

@@ -2,6 +2,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import classes from "@/styles/components/LoginForm.module.css";
+import PrimaryButton from "./primary-button";
+import ShowButton from "./show-button";
 
 export default function LoginForm({ handleUserData }) {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -102,19 +104,15 @@ export default function LoginForm({ handleUserData }) {
             disabled={isLocked}
             required
           />
-          <button
-            className={classes.showButton}
-            type="button"
-            onClick={toggleShowPassword}
-          >
+          <ShowButton type="button" onclickFN={toggleShowPassword}>
             {!showPassword ? "Show" : "Hide"}
-          </button>
+          </ShowButton>
         </div>
         <div className={classes.lockButtonsContainer}>
-          <button type="button" onClick={toggleLock}>
+          {/* <button type="button" onClick={toggleLock}>
             {!isLocked ? "Lock" : "Unlock"}
-          </button>
-          <button type="submit">Login</button>
+          </button> */}
+          <PrimaryButton type="submit">Login</PrimaryButton>
         </div>
       </form>
     </div>
