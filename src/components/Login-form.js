@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import classes from "@/styles/components/LoginForm.module.css";
 import PrimaryButton from "./primary-button";
 import ShowButton from "./show-button";
+import LockButton from "./lock-button";
 
 export default function LoginForm({ handleUserData }) {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -77,10 +78,6 @@ export default function LoginForm({ handleUserData }) {
 
   return (
     <div className={classes.container}>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {message && <p style={{ color: "green" }}>{message}</p>}
-      {isLoading && <div>Login User ....</div>}
-
       <form onSubmit={handleLoginUser} className={classes.formContainer}>
         <label>Email</label>
         <input
@@ -112,9 +109,17 @@ export default function LoginForm({ handleUserData }) {
           {/* <button type="button" onClick={toggleLock}>
             {!isLocked ? "Lock" : "Unlock"}
           </button> */}
-          <PrimaryButton type="submit">Login</PrimaryButton>
+          <LockButton type="button" onclickFN={toggleLock}>
+            {!isLocked ? "Lock" : "Unlock"}
+          </LockButton>
+          <PrimaryButton type="submit">LOGIN</PrimaryButton>
         </div>
       </form>
+      <div style={{ marginTop: "10px" }}>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {message && <p style={{ color: "green" }}>{message}</p>}
+        {isLoading && <p>Login User ....</p>}
+      </div>
     </div>
   );
 }

@@ -1,18 +1,19 @@
 .btn {
-  width: 30%;
-  padding: 0.75rem;
-  background-color: #0077ff;
+  width: 60px;
+  height: 40px;
+  /* padding: 0.75rem; */
+  background-color: #000000;
   color: white;
   font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  /* cursor: pointer;
+  transition: background-color 0.3s ease; */
 }
 
-.btn:disabled {
+/* .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 .btn:enabled {
   opacity: 1;
-}
+} */

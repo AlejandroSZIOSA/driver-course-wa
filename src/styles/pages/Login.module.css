@@ -5,7 +5,7 @@
   justify-content: initial;
   /* width: 400px; */
   height: 750px;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 
 .innerContainer {
@@ -15,6 +15,14 @@
   justify-content: center;
   margin: 20px;
   width: 400px;
-  height: 400px;
-  background-color: bisque;
+  height: 430px;
+  /* background-color: bisque; */
+}
+
+.infoBox {
+  display: flex;
+  /*  background: burlywood; */
+  width: inherit;
+  height: fit-content;
+  padding: 10px 0px 10px 0px;
 }

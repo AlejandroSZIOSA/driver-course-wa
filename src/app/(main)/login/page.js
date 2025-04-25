@@ -39,19 +39,23 @@ export default function LoginPage() {
 
   return (
     <main className={classes.main}>
-      <h1 style={{ padding: "10px" }}>Log-in</h1>
+      <h1 style={{ padding: "20px" }}>Log-in</h1>
       <Image
         src="/images/userLogIn.png"
-        width={150}
-        height={150}
+        width={190}
+        height={190}
         alt="UserImg"
         priority={true}
       />
       <div className={classes.innerContainer}>
-        {isLoadingData && <div>Loading Data ....</div>}
-        {errorData && <div>Error: {errorData}</div>}
-        {questions && <p style={{ color: "green" }}>Data loaded successful</p>}
         <LoginForm handleUserData={handleUserData} />
+        <div className={classes.infoBox}>
+          {isLoadingData && <p>Loading Data ....</p>}
+          {errorData && <p>Error: {errorData}</p>}
+          {questions && (
+            <p style={{ color: "green" }}>Data loaded successful</p>
+          )}
+        </div>
       </div>
     </main>
   );
