@@ -80,6 +80,7 @@ export default function LoginForm({ handleUserData }) {
       {isLoading && <div>Login User ....</div>}
 
       <form onSubmit={handleLoginUser} className={classes.formContainer}>
+        <label>Email</label>
         <input
           type="email"
           name="email"
@@ -89,25 +90,32 @@ export default function LoginForm({ handleUserData }) {
           disabled={isLocked}
           required
         />
-        <div style={{ display: "flex" }}>
+        <label>Password</label>
+        <div className={classes.passwordInputContainer}>
           <input
             type={showPassword ? "text" : "password"}
             name="password"
             placeholder="Password"
+            maxLength={20}
             value={user.password}
             onChange={handleChange}
             disabled={isLocked}
             required
           />
-
-          <button type="button" onClick={toggleShowPassword}>
+          <button
+            className={classes.showButton}
+            type="button"
+            onClick={toggleShowPassword}
+          >
             {!showPassword ? "Show" : "Hide"}
           </button>
         </div>
-        <button type="button" onClick={toggleLock}>
-          {!isLocked ? "Lock" : "Unlock"}
-        </button>
-        <button type="submit">Login</button>
+        <div className={classes.lockButtonsContainer}>
+          <button type="button" onClick={toggleLock}>
+            {!isLocked ? "Lock" : "Unlock"}
+          </button>
+          <button type="submit">Login</button>
+        </div>
       </form>
     </div>
   );

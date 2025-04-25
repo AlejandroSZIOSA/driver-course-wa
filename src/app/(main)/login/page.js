@@ -9,6 +9,7 @@ import LoginForm from "@/components/Login-form";
 //Sanity
 import { getAllQuestions } from "@/lib/api";
 
+import Image from "next/image";
 import classes from "@/styles/pages/Login.module.css";
 
 export default function LoginPage() {
@@ -37,12 +38,21 @@ export default function LoginPage() {
   }
 
   return (
-    <main className={classes.container}>
-      <h1>Login</h1>
-      {isLoadingData && <div>Loading Data ....</div>}
-      {errorData && <div>Error: {errorData}</div>}
-      {questions && <p style={{ color: "green" }}>Data loaded successful</p>}
-      <LoginForm handleUserData={handleUserData} />
+    <main className={classes.main}>
+      <h1 style={{ padding: "10px" }}>Log-in</h1>
+      <Image
+        src="/images/userLogIn.png"
+        width={150}
+        height={150}
+        alt="UserImg"
+        priority={true}
+      />
+      <div className={classes.innerContainer}>
+        {isLoadingData && <div>Loading Data ....</div>}
+        {errorData && <div>Error: {errorData}</div>}
+        {questions && <p style={{ color: "green" }}>Data loaded successful</p>}
+        <LoginForm handleUserData={handleUserData} />
+      </div>
     </main>
   );
 }

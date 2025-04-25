@@ -30,7 +30,9 @@ export default function Home() {
           alt="CarHomePage"
           priority={true}
         />
-        <h2>You are: {user.isAuth ? <p>LogIn</p> : <p>Not-Login</p>}</h2>
+        <h2>
+          You are: {user.isAuth ? <span> LogIn</span> : <span> Not-Login</span>}
+        </h2>
         <PrimaryButton onclickFN={handleStart} isDisabled={!user.isAuth}>
           START
         </PrimaryButton>

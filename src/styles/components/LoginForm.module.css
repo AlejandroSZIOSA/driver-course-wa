@@ -1,9 +1,54 @@
 .container {
   display: flex;
   flex-direction: column;
+  width: 350px;
+  background-color: aquamarine;
 }
 .formContainer {
   display: flex;
   flex-direction: column;
   padding: 10px;
+}
+
+.formContainer label {
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+}
+
+.formContainer input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.passwordInputContainer {
+  display: flex;
+  align-items: baseline;
+}
+
+.showButton {
+  width: 30%;
+  padding: 0.75rem;
+  background-color: #0077ff;
+  color: white;
+  /* border: none;
+  border-radius: 50px; */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.lockButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.lockButtonsContainer button {
+  width: 30%;
 }
