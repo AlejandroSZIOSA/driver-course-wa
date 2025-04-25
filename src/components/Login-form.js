@@ -51,7 +51,7 @@ export default function LoginForm({ handleUserData }) {
       });
       const data = await res.json();
 
-      /* localStorage.setItem("token", data.token); */
+      /*TODO: localStorage.setItem("token", data.token); */
 
       if (!res.ok) {
         if (res.status === 401 || res.status === 404) {
@@ -102,14 +102,15 @@ export default function LoginForm({ handleUserData }) {
             disabled={isLocked}
             required
           />
-          <ShowButton type="button" onclickFN={toggleShowPassword}>
+          <ShowButton
+            type="button"
+            onclickFN={toggleShowPassword}
+            isDisabled={isLocked}
+          >
             {!showPassword ? "Show" : "Hide"}
           </ShowButton>
         </div>
         <div className={classes.lockButtonsContainer}>
-          {/* <button type="button" onClick={toggleLock}>
-            {!isLocked ? "Lock" : "Unlock"}
-          </button> */}
           <LockButton type="button" onclickFN={toggleLock}>
             {!isLocked ? "Lock" : "Unlock"}
           </LockButton>

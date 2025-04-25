@@ -5,11 +5,11 @@
   font-size: 1rem;
 }
 
-/* .btn:disabled {
+.btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 .btn:enabled {
   opacity: 1;
-} */
+}
