@@ -5,6 +5,7 @@ import classes from "@/styles/components/LoginForm.module.css";
 import PrimaryButton from "./primary-button";
 import ShowButton from "./show-button";
 import LockButton from "./lock-button";
+import InfoBoxInsideForm from "./infoBox-insideForm";
 
 export default function LoginForm({ handleUserData }) {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -78,7 +79,7 @@ export default function LoginForm({ handleUserData }) {
 
   return (
     <div className={classes.container}>
-      <form onSubmit={handleLoginUser} className={classes.formContainer}>
+      <form className={classes.formContainer} onSubmit={handleLoginUser}>
         <label>Email</label>
         <input
           type="email"
@@ -116,9 +117,13 @@ export default function LoginForm({ handleUserData }) {
         </div>
       </form>
       <div style={{ marginTop: "10px" }}>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {message && <p style={{ color: "green" }}>{message}</p>}
-        {isLoading && <p>Login User ....</p>}
+        {error && (
+          <InfoBoxInsideForm colorText="red">{error}</InfoBoxInsideForm>
+        )}
+        {message && (
+          <InfoBoxInsideForm colorText="green">{message}</InfoBoxInsideForm>
+        )}
+        {isLoading && <InfoBoxInsideForm>login User ...</InfoBoxInsideForm>}
       </div>
     </div>
   );

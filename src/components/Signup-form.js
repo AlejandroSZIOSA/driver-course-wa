@@ -2,6 +2,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import classes from "@/styles/components/SignupForm.module.css";
+import ShowButton from "./show-button";
+import PrimaryButton from "./primary-button";
+import InfoBoxInsideForm from "./infoBox-insideForm";
 
 export default function SignupForm() {
   const [newUser, setNewUser] = useState({
@@ -35,7 +38,7 @@ export default function SignupForm() {
 
     //Confirm the password
     if (newUser.password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("Passwords doesn't match");
       return;
     }
 
@@ -73,48 +76,59 @@ export default function SignupForm() {
   };
 
   return (
-    <>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {message && <p> {message}</p>}
-      {isCreatingUser && <div>Creating User ....</div>}
-      <form onSubmit={handleSubmit} className={classes.form}>
+    <div className={classes.container}>
+      <form className={classes.formContainer} onSubmit={handleSubmit}>
+        <label>Email</label>
         <input
           type="email"
           name="email"
+          maxLength={30}
           placeholder="Email"
           value={newUser.email}
           onChange={handleChange}
           required
         />
-
-        <div style={{ display: "flex" }}>
+        <label>Password</label>
+        <div className={classes.passwordInputContainer}>
           <input
             type={showPassword ? "text" : "password"}
             name="password"
+            maxLength={20}
             placeholder="Password"
             value={newUser.password}
             onChange={handleChange}
             required
           />
-          <button type="button" onClick={toggleShowPassword}>
+          <ShowButton type="button" onclickFN={toggleShowPassword}>
             {!showPassword ? "Show" : "Hide"}
-          </button>
+          </ShowButton>
         </div>
-        <div>
+        <label>Confirm Password</label>
+        <div className={classes.passwordInputContainer}>
           <input
             type={showConfirmPassword ? "text" : "password"}
             name="confirmPassword"
+            maxLength={20}
             placeholder="Re-Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          <button type="button" onClick={toggleShowConfirmPassword}>
+          <ShowButton type="button" onclickFN={toggleShowConfirmPassword}>
             {!showConfirmPassword ? "Show" : "Hide"}
-          </button>
+          </ShowButton>
         </div>
-        <button type="submit">Sign Up</button>
+        <div className={classes.submitButtonContainer}>
+          <PrimaryButton type="submit">CREATE</PrimaryButton>
+        </div>
       </form>
-    </>
+      {error && (
+        <InfoBoxInsideForm colorText="red">Error: {error}</InfoBoxInsideForm>
+      )}
+      {message && <InfoBoxInsideForm>{message}</InfoBoxInsideForm>}
+      {isCreatingUser && (
+        <InfoBoxInsideForm>Creating User ...</InfoBoxInsideForm>
+      )}
+    </div>
   );
 }

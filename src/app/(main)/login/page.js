@@ -42,8 +42,8 @@ export default function LoginPage() {
       <h1 style={{ padding: "20px" }}>Log-in</h1>
       <Image
         src="/images/userLogIn.png"
-        width={190}
-        height={190}
+        width={180}
+        height={180}
         alt="UserImg"
         priority={true}
       />

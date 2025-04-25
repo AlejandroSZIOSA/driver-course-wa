@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: initial;
+  /* width: 400px; */
+  height: 750px;
+  /* margin-top: 50px; */
+  /*  background-color: aquamarine; */
+}
+.form {
+  padding: 10px;
+}
