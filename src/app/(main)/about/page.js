@@ -10,10 +10,8 @@ export default function AboutPage() {
     <main className={classes.container}>
       <h1 style={{ padding: "10px" }}>ABOUT US</h1>
       <section className={classes.section}>
-        <h2>Farsta Traffic School</h2>
-        <p className={classes.paragraph}>
-          ......232323232323232323232323232323232323232323232323.
-        </p>
+        <h2>Info here</h2>
+        <p className={classes.paragraph}>.....</p>
       </section>
     </main>
   );
